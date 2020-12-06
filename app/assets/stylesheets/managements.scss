@@ -1,6 +1,13 @@
 // Place all the styles related to the managements controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.result-header-bg {
+  background-color: black;
+  .result-header-text {
+    color: white;
+  }
+}
+
 
 @media screen and (min-width: 640px) {
   
