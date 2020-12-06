@@ -1,4 +1,11 @@
 <div class="uk-container-small">
+<div id="app">
+  <bracket :rounds="rounds">
+    <template #player="{ player }">
+      <span>{{ player.name }}</span>
+    </template>
+  </bracket>
+</div>
   <div class="result-header-bg">
     <h3 class="uk-text-center result-header-text">試合結果</h3>
   </div>
