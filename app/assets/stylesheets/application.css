@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+@import "managements.scss";
+
+.header {
+  background-color: black;
+  color: white;
+}
+.header h3{
+  background-color: black;
+  color: white;
+  margin-left: 20px;
+  padding: 20px;
+}
+.contents {
+  display: flex;
+}
+.navbar h5 {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+.left-content {
+  width: 60%;
+  padding: 20px;
+  display: inline-block;
+}
+.right-content {
+  width: 20%;
+  display: inline-block;
+  margin: 0 auto;
+}
