@@ -329,7 +329,7 @@ Result.create!(
       home_team_id: 30,
       away_team_id: 32,
       court: 1
-    }
+    },
     {
       home_team_id: 1,
       away_team_id: 4,

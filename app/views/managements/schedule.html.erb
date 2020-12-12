@@ -23,6 +23,7 @@
       <% @results_Acourt = @results.where(court: 0).order(:id) %>
       <% match_num = 0 %>
       <% @results_Acourt.each do |result| %> 
+     
         <tbody>
           <tr>
             <% home_teamA = @teams.find_by(id: result.home_team_id) %>
@@ -30,7 +31,8 @@
             <% match_num += 1 %>
             <td><%= match_num %></td>
             <td>11:25</td>
-            <td><%= home_teamA.name %><br>vs<br><%= away_teamA.name %></td>
+          <td><%= link_to "#", controller: 'managements', action: 'edit', id: result.id %></td>
+            <td><%= home_teamA.name %><br>vs<br><%= away_teamA.name %> </td>
             <% if result.id == 1 %>
               <td><%=@referee_headquarters %></td>
             <% else %>
