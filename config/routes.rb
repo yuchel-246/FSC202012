@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   root to: 'managements#result'
   get 'schedule', to: 'managements#schedule'
   get 'ranking', to: 'managements#ranking'
-  get 'edit', to: 'managements#edit'
+  get 'matches/:id', to: 'managements#show'
+  get 'matches/:id/edit', to: 'managements#edit'
+  patch 'matches/:id', to: 'managements#update'
 end

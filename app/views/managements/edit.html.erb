@@ -2,10 +2,13 @@
 <table class="uk-table uk-table-small uk-table-divider">
   <tbody>
     <tr>
-      <td>日本</td>
-      <td>0</td>
-      <td>1</td>
-      <td>ポーランド</td>
+      <%= form_for @result, url: {action: "update"} do |f| %>
+        <td><%= @result.home_team_id %></td>
+        <td><%= f.text_field :home_team_score %></td>
+        <td><%= f.text_field :away_team_score %></td>
+        <td><%= @result.away_team_id %></td>
+        <%= f.submit "登録" %>
+      <% end %>
     </tr>
   </tbody>
 </table>
