@@ -18,12 +18,12 @@
           <th>試合開始時間</th>
           <th>Aコート</th>
           <th>審判(A)</th>
+          <th></th>
         </tr>
       </thead>
       <% @results_Acourt = @results.where(court: 0).order(:id) %>
       <% match_num = 0 %>
       <% @results_Acourt.each do |result| %> 
-     
         <tbody>
           <tr>
             <% home_teamA = @teams.find_by(id: result.home_team_id) %>
@@ -31,13 +31,13 @@
             <% match_num += 1 %>
             <td><%= match_num %></td>
             <td>11:25</td>
-          <td><%= link_to "#", controller: 'managements', action: 'edit', id: result.id %></td>
             <td><%= home_teamA.name %><br>vs<br><%= away_teamA.name %> </td>
             <% if result.id == 1 %>
               <td><%=@referee_headquarters %></td>
             <% else %>
               <td><%=@referee_lose_team %></td>
             <% end %>
+          <td><%= link_to "登録する", controller: 'managements', action: 'edit', id: result.id %></td>
           </tr>
         </tbody>
       <% end %>
@@ -53,6 +53,7 @@
           <th>試合開始時間</th>
           <th>Bコート</th>
           <th>審判(B)</th>
+          <th></th>
         </tr>
       </thead>
       <% @results_Bcourt = @results.where(court: 1).order(:id) %>
@@ -71,6 +72,7 @@
             <% else %>
               <td><%=@referee_lose_team %></td>
             <% end %>
+            <td><%= link_to "登録する", controller: 'managements', action: 'edit', id: result.id %></td>
           </tr>
         </tbody>
       <% end %>
@@ -86,6 +88,7 @@
           <th>試合開始時間</th>
           <th>Cコート</th>
           <th>審判(C)</th>
+          <th></th>
         </tr>
       </thead>
       <% @results_Ccourt = @results.where(court: 2).order(:id) %>
@@ -105,6 +108,7 @@
             <% else %>
               <td><%=@referee_lose_team %></td>
             <% end %>
+            <td><%= link_to "登録する", controller: 'managements', action: 'edit', id: result.id %></td>
           </tr>
         </tbody>
       <% end %>
