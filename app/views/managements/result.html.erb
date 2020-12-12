@@ -29,15 +29,37 @@
         <% @teams_based_on_group = @teams.where(group_id: group.id) %>
         <% @teams_based_on_group.each do |team| %>
           <tr>
-            <td>１</td>
-            <td><%= team.name %></td>
+            <% home_win_point = @results.where(home_team_id: team.id, home_team_point: 3) %>
+            <% away_win_point = @results.where(away_team_id: team.id, away_team_point: 3) %>
+            <% win_point = home_win_point.count + away_win_point.count%>
+            <% home_draw_point = @results.where(home_team_id: team.id, home_team_point: 1) %>
+            <% away_draw_point = @results.where(away_team_id: team.id, away_team_point: 1) %>
+            <% draw_point = home_draw_point.count + away_draw_point.count%>
+            <% home_lose_point = @results.where(home_team_id: team.id, home_team_point: 0) %>
+            <% away_lose_point = @results.where(away_team_id: team.id, away_team_point: 0) %>
+            <% lose_point = home_lose_point.count + away_lose_point.count%>
+            <% sum_point = win_point * 3 + draw_point * 1 %>
+            <% home_get_score = @results.where(home_team_id: team.id) %>
+            <% home_get_scores = home_get_score.all.sum(:home_team_score) %>
+            <% away_get_score = @results.where(away_team_id: team.id) %>
+            <% away_get_scores = away_get_score.all.sum(:away_team_score) %>
+            <% total_get_scores = home_get_scores + away_get_scores %>
+            <% home_lost_score = @results.where(home_team_id: team.id) %>
+            <% home_lost_scores = home_lost_score.all.sum(:away_team_score) %>
+            <% away_lost_score = @results.where(away_team_id: team.id) %>
+            <% away_lost_scores = away_lost_score.all.sum(:home_team_score) %>
+            <% total_lost_scores = home_lost_scores + away_lost_scores %>
+            <% goal_difference = total_get_scores - total_lost_scores %>
+
             <td>1</td>
-            <td>９</td>
-            <td>３</td>
-            <td>４</td>
-            <td>３</td>
-            <td>３</td>
-            <td>４</td>
+            <td><%= team.name %></td>
+            <td><%= sum_point %></td>
+            <td><%= win_point %></td>
+            <td><%= draw_point %></td>
+            <td><%= lose_point %></td>
+            <td><%= total_get_scores %></td>
+            <td><%= total_lost_scores %></td>
+            <td><%= goal_difference %></td>
           </tr>
         <% end %>
       </tbody>
